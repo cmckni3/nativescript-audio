@@ -34,15 +34,8 @@ export class TNSRecorder extends NSObject implements TNSRecordI {
         this._recordingSession.setActiveError(true, null);
         this._recordingSession.requestRecordPermission((allowed: boolean) => {
           if (allowed) {
-            // var recordSetting = new NSMutableDictionary((<any>[NSNumber.numberWithInt(kAudioFormatMPEG4AAC), NSNumber.numberWithInt((<any>AVAudioQuality).Medium.rawValue), NSNumber.numberWithFloat(16000.0), NSNumber.numberWithInt(1)]),
-            //   (<any>["AVFormatIDKey", "AVEncoderAudioQualityKey", "AVSampleRateKey", "AVNumberOfChannelsKey"]));
-
             let recordSetting = NSMutableDictionary.alloc().init();
-            recordSetting.setValueForKey(NSNumber.numberWithInt(kAudioFormatMPEG4AAC), 'AVFormatIDKey');
-            // recordSetting.setValueForKey(
-            //   NSNumber.numberWithInt((<any>AVAudioQuality).Medium.rawValue),
-            //   'AVEncoderAudioQualityKey'
-            // );
+            recordSetting.setValueForKey(NSNumber.numberWithInt(kAudioFormatAMR_WB), 'AVFormatIDKey');
             recordSetting.setValueForKey(NSNumber.numberWithInt(AVAudioQuality.Medium), 'AVEncoderAudioQualityKey');
             recordSetting.setValueForKey(NSNumber.numberWithFloat(16000.0), 'AVSampleRateKey');
             recordSetting.setValueForKey(NSNumber.numberWithInt(1), 'AVNumberOfChannelsKey');
